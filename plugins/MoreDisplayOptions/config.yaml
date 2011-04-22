@@ -1,0 +1,12 @@
+name: More Display Options
+id:   MoreDisplayOptions
+key:  moredisplayoptions
+version: 0.1
+author_link: https://alfasado.net/
+author_name: Alfasado Inc.
+l10n_class: MoreDisplayOptions::L10N
+description: '<__trans phrase="Available to Entry Display Options, Title and Text.">'
+callbacks:
+    MT::App::CMS::template_param.edit_entry: $moredisplayoptions::MoreDisplayOptions::Plugin::prefs_option_param
+    MT::App::CMS::template_source.edit_entry: $moredisplayoptions::MoreDisplayOptions::Plugin::prefs_option_source
+    MT::App::CMS::template_output.edit_entry: $moredisplayoptions::MoreDisplayOptions::Plugin::prefs_option_output
