@@ -1,7 +1,7 @@
 name: More Display Options
 id:   MoreDisplayOptions
 key:  moredisplayoptions
-version: 0.1
+version: 0.2
 author_link: https://alfasado.net/
 author_name: Alfasado Inc.
 l10n_class: MoreDisplayOptions::L10N
