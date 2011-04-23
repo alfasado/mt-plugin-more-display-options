@@ -11,9 +11,16 @@ sub prefs_option_param {
         $object_type = 'page';
     }
     my $entry_prefs = $app->permissions->$prefs;
-    my @prefs = split( /,/, $entry_prefs );
-    my $show_title = 1 if grep( /^title$/, @prefs );
-    my $show_text = 1 if grep( /^text$/, @prefs );
+    my $show_title;
+    my $show_text;
+    if (! $entry_prefs ) {
+        $show_title = 1;
+        $show_text = 1;
+    } else {
+        my @prefs = split( /,/, $entry_prefs );
+        $show_title = 1 if grep( /^title$/, @prefs );
+        $show_text = 1 if grep( /^text$/, @prefs );
+    }
     my $field_loop = $param->{ field_loop };
     my @new_loop;
     for my $field ( @$field_loop ) {
@@ -38,10 +45,17 @@ sub prefs_option_source {
         $prefs = 'page_prefs';
         $object_type = 'page';
     }
+    my $show_title;
+    my $show_text;
     my $entry_prefs = $app->permissions->$prefs;
-    my @prefs = split( /,/, $entry_prefs );
-    my $show_title = 1 if grep( /^title$/, @prefs );
-    my $show_text = 1 if grep( /^text$/, @prefs );
+    if (! $entry_prefs ) {
+        $show_title = 1;
+        $show_text = 1;
+    } else {
+        my @prefs = split( /,/, $entry_prefs );
+        $show_title = 1 if grep( /^title$/, @prefs );
+        $show_text = 1 if grep( /^text$/, @prefs );
+    }
     my $search = quotemeta( '<mt:setvarblock name="html_head" append="1">' );
     my $css = '';
     if (! $show_title ) {
