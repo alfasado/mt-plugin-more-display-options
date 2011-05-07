@@ -13,10 +13,11 @@ sub prefs_option_param {
     my $entry_prefs = $app->permissions->$prefs;
     my $show_title;
     my $show_text;
-    if (! $entry_prefs ) {
+    if ( (! $entry_prefs ) || $entry_prefs eq 'Default|Bottom' ) {
         $show_title = 1;
         $show_text = 1;
     } else {
+        $entry_prefs =~ s/\|//g;
         my @prefs = split( /,/, $entry_prefs );
         $show_title = 1 if grep( /^title$/, @prefs );
         $show_text = 1 if grep( /^text$/, @prefs );
@@ -48,10 +49,11 @@ sub prefs_option_source {
     my $show_title;
     my $show_text;
     my $entry_prefs = $app->permissions->$prefs;
-    if (! $entry_prefs ) {
+    if ( (! $entry_prefs ) || $entry_prefs eq 'Default|Bottom' ) {
         $show_title = 1;
         $show_text = 1;
     } else {
+        $entry_prefs =~ s/\|//g;
         my @prefs = split( /,/, $entry_prefs );
         $show_title = 1 if grep( /^title$/, @prefs );
         $show_text = 1 if grep( /^text$/, @prefs );
